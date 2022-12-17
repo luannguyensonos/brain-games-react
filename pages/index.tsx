@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import Link from 'next/link'
 import PageContainer from '../components/PageContainer/PageContainer'
 import styles from '../styles/Home.module.css'
