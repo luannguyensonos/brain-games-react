@@ -31,6 +31,9 @@ export const notepad = style({
   paddingBottom: '8vw',
   color: 'black',
   wordWrap: 'break-word',
+  fontWeight: 500,
+  lineHeight: '8vw',
+  letterSpacing: '-0.2vw',
 })
 
 const blink = keyframes({

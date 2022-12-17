@@ -3,6 +3,11 @@ import { colorButton, colorPicker, cursor, notepad } from "./RainbowPad.css"
 
 type RainbowPadProps = {}
 
+const mobileMsg = `
+  Sorry. This app can only be played
+  on a desktop using a keyboard.
+`
+
 const getRandomInt = (max: number) => {
   return Math.floor(Math.random() * Math.floor(max))
 }
@@ -45,6 +50,14 @@ const spanReducer = (state: string[], action: spansAction) => {
 const RainbowPad = ({}: RainbowPadProps) => {
   const [spans, dispatch] = React.useReducer(spanReducer, [])
 
+  const handleLetter = (letter: string) => {
+    if (getRandomInt(100) % 3 !== 0) {
+      dispatch({type: "NEW", text: letter})
+    } else {
+      dispatch({type: "APPEND", text: letter})
+    }
+  }
+
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.code === "Escape") {
       dispatch({type: "CLEAR"})
@@ -58,11 +71,7 @@ const RainbowPad = ({}: RainbowPadProps) => {
     } else if (e.code === "Space") {
       dispatch({type: "APPEND", text: " "})
     } else if (e.key && e.key.length === 1) {
-      if (getRandomInt(100) % 3 !== 0) {
-        dispatch({type: "NEW", text: e.key})
-      } else {
-        dispatch({type: "APPEND", text: e.key})
-      }
+      handleLetter(e.key)
     }
     window.scrollTo(0, document.body.scrollHeight);
     e.preventDefault();
@@ -76,13 +85,23 @@ const RainbowPad = ({}: RainbowPadProps) => {
     }
   }, [])
   
+  React.useEffect(() => {
+    if (!window.matchMedia("(min-width: 768px)").matches)
+    {
+      dispatch({type: "CLEAR"})
+      for(let i = 0; i < mobileMsg.length; i++) {
+        handleLetter(mobileMsg.charAt(i))
+      }
+    }
+  }, [])
+  
   return (
     <>
       <div className={colorPicker}>
         {colorArray.map(c => {
           const color = c === "BLACK" ? "#999" : c
           const activeColor = colorArray[(spans.length-1) % colorArray.length] ?? colorArray[0]
-          const borderWidth = c === activeColor ? '8px' : '1px'
+          const borderWidth = c === activeColor ? '0.75vw' : '1px'
           return (
             <button
               className={colorButton}
