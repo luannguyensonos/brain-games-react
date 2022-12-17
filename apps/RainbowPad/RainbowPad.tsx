@@ -35,8 +35,14 @@ const spanReducer = (state: string[], action: spansAction) => {
       const newSpan = lastSpan ? `${lastSpan}${action.text}` : `${action.text}`
       return [...newState, newSpan]
     case "DELETE":
-      const deletedState = state.slice(0, state.length-1)
-      return [...deletedState]
+      const poppedState = state.slice(0, state.length-1)
+      const last = state[state.length-1]
+      if (last && last.length > 1) {
+        const newSpan = last.substring(0, last.length-1)
+        return [...poppedState, newSpan]
+      } else {
+        return [...poppedState]
+      }
     case "CLEAR":
       return []
     default:

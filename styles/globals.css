@@ -11,6 +11,18 @@ a {
   text-decoration: none;
 }
 
+li {
+  margin-bottom: 1rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 66%;
+}
+
 * {
   box-sizing: border-box;
 }

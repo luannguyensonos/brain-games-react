@@ -11,7 +11,9 @@ export default function Home() {
         </h1>
         <h2>Preschool apps</h2>
         <ul>
-          <li><Link href="/rainbow-pad">Rainbow Pad</Link> - A game for kids to mash the keyboard.</li>
+          {/* Note: Using NextLink here makes the CSS carryover from one app to the next */}
+          <li><a href="/rainbow-pad">Rainbow Pad</a> - A game for kids to mash the keyboard.</li>
+          <li><a href="/rainbow-counter">Rainbow Counter</a> - A game to learn the numbers 1-100.</li>
         </ul>
       </main>
     </PageContainer>
