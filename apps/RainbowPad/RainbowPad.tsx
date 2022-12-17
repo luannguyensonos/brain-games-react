@@ -1,4 +1,5 @@
 import React from "react"
+import { getRandomInt } from "../../utils/numbers"
 import { colorButton, colorPicker, cursor, notepad } from "./RainbowPad.css"
 
 type RainbowPadProps = {}
@@ -7,10 +8,6 @@ const mobileMsg = `
   Sorry. This app can only be played
   on a desktop using a keyboard.
 `
-
-const getRandomInt = (max: number) => {
-  return Math.floor(Math.random() * Math.floor(max))
-}
 
 const colorArray = [
   "RED",
@@ -101,7 +98,7 @@ const RainbowPad = ({}: RainbowPadProps) => {
         {colorArray.map(c => {
           const color = c === "BLACK" ? "#999" : c
           const activeColor = colorArray[(spans.length-1) % colorArray.length] ?? colorArray[0]
-          const borderWidth = c === activeColor ? '0.75vw' : '1px'
+          const borderWidth = c === activeColor ? '0.66vw' : '1px'
           return (
             <button
               className={colorButton}

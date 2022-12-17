@@ -1,6 +1,7 @@
 import { globalStyle, keyframes, style } from "@vanilla-extract/css"
 
 const topGutter = '8vw'
+const canvasColor = '#DDD'
 
 export const colorPicker = style({
   display: 'flex',
@@ -25,7 +26,7 @@ export const colorButton = style({
 export const notepad = style({
   width: '100vw',
   marginTop: topGutter,
-  backgroundColor: '#DDD',
+  backgroundColor: canvasColor,
   fontSize: '8vw',
   padding: '2vw',
   paddingBottom: '8vw',
@@ -53,5 +54,5 @@ export const cursor = style({
 })
 
 globalStyle(`body`, {
-  backgroundColor:'#DDD',
+  backgroundColor: canvasColor,
 })
