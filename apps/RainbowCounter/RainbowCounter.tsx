@@ -9,10 +9,11 @@ const range = createRange(upperBound)
 
 type NumberProps = {
   value: number
+  baseline: number
   setter: React.Dispatch<React.SetStateAction<number>>
 }
 
-const Number = ({value, setter}: NumberProps) => {
+const Number = ({value, baseline, setter}: NumberProps) => {
   const end = value % 10
   const front = parseInt(value.toString().slice(0, -1))
 
@@ -28,7 +29,7 @@ const Number = ({value, setter}: NumberProps) => {
       </div>
       <div className={numberGrid}>
         {range.map(i => {
-          const num = i+1
+          const num = i+1+baseline
           const endNum = num % 10
           return (
             <button
@@ -46,16 +47,20 @@ const Number = ({value, setter}: NumberProps) => {
 
 const SimpleCounter = ({}: SimpleCounterProps) => {
   const [currentNumber, setCurrentNumber] = React.useState(0)
+  const [baseline, setBaseline] = React.useState(0)
 
   const add = (delta: number) => {
     const newNumber = currentNumber+delta
-    if (newNumber < 0 || newNumber > upperBound) return
+    if (newNumber < 0) return
+    if (newNumber > baseline + upperBound) {
+      setBaseline(newNumber - (newNumber % upperBound))
+    }
     setCurrentNumber(newNumber)
   }
   const random = () => {
     let newNumber
     do {
-      newNumber = getRandomInt(upperBound)
+      newNumber = getRandomInt(upperBound)+baseline
     } while (newNumber === currentNumber)
 
     setCurrentNumber(newNumber)
@@ -63,7 +68,7 @@ const SimpleCounter = ({}: SimpleCounterProps) => {
 
   return (
     <>
-      <Number value={currentNumber} setter={setCurrentNumber}/>
+      <Number value={currentNumber} baseline={baseline} setter={setCurrentNumber}/>
       <div className={controls}>
         <button 
           onClick={()=>{add(-10)}}>
