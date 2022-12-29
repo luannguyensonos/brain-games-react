@@ -52,9 +52,7 @@ const SimpleCounter = ({}: SimpleCounterProps) => {
   const add = (delta: number) => {
     const newNumber = currentNumber+delta
     if (newNumber < 0) return
-    if (newNumber > baseline + upperBound) {
-      setBaseline(newNumber - (newNumber % upperBound))
-    }
+    setBaseline(newNumber - (newNumber % upperBound))
     setCurrentNumber(newNumber)
   }
   const random = () => {
