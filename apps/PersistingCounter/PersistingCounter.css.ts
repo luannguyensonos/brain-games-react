@@ -29,8 +29,7 @@ globalStyle(`${controls} button`, {
   width: '14vw',
   fontSize: '8vw',
   backgroundColor: 'transparent',
-  border: '1px solid white',
-  borderRadius: '50%'
+  color: 'white',
 })
 
 globalStyle(`${controls} span`, {
