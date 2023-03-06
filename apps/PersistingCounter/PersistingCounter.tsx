@@ -23,7 +23,12 @@ const PersistingCounter = ({ label }: PersistingCounterProps) => {
   const add = (delta: number) => {
     const newValue = Number(currentNumber) + delta
     setCurrentNumber(newValue)
-    setCookie(cookieName, newValue)
+
+    const farDate = new Date()
+    farDate.setFullYear(farDate.getFullYear()+1)
+    setCookie(cookieName, newValue, {
+      expires: farDate
+    })
   }
 
   return (
