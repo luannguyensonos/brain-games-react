@@ -20,7 +20,6 @@ export const controls = style({
   alignItems: 'center',
   justifyContent: 'space-between',
   width: '100%',
-  color: 'white',
   padding: '2vw 10vw'
 })
 
@@ -29,7 +28,6 @@ globalStyle(`${controls} button`, {
   width: '14vw',
   fontSize: '8vw',
   backgroundColor: 'transparent',
-  color: 'white',
 })
 
 globalStyle(`${controls} span`, {

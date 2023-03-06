@@ -40,8 +40,7 @@ globalStyle(`${controls} button`, {
   paddingLeft: '4vw',
   paddingRight: '4vw',
   backgroundColor: 'transparent',
-  color: 'white',
-  border: '1px solid white',
+  border: '1px solid',
 })
 
 globalStyle(`${container} .c0`, {
