@@ -44,11 +44,6 @@ globalStyle(`${controls} button`, {
   border: '1px solid white',
 })
 
-globalStyle(`${container}`, {
-  backgroundColor: '#222',
-  height: '100vh',
-})
-
 globalStyle(`${container} .c0`, {
   color: '#FFDC00'
 })
