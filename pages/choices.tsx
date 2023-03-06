@@ -9,6 +9,7 @@ export default function Page() {
       <PageContainer title="Choices" description="Good choices equals more choices">
         <PersistingCounter label='Khai'/>
         <PersistingCounter label='Camille'/>
+        <PersistingCounter label='Parents'/>
       </PageContainer>
     </CookiesProvider>
   )
