@@ -63,12 +63,12 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
 
   return (
     <div className={container}>
-      <Clock value={ currentDate } />
       <div className={timeStyle}>
         <input type="number" pattern="\d*" min={1} max={12} value={userHour} onChange={onHourChange} onFocus={onFocus} />
         &nbsp;:&nbsp;
         <input type="number" pattern="\d*" min={0} max={59} value={userMinute} onChange={onMinuteChange} onFocus={onFocus} />
       </div>
+      <Clock value={ currentDate } />
       <div className={messageStyle}>Score: {score}</div>
       <div className={messageStyle}>{message}</div>
     </div>

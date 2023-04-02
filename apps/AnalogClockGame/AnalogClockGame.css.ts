@@ -34,4 +34,5 @@ globalStyle(`${timeStyle} input`, {
   height: '18vw',
   width: '36vw',
   fontSize: '10vw',
+  textAlign: 'center',
 })
