@@ -16,6 +16,11 @@ export default function Home() {
           <li><a href="/rainbow-pad">Rainbow Pad</a> - A game for kids to mash the keyboard.</li>
           <li><a href="/rainbow-counter">Rainbow Counter</a> - A game to learn the numbers 1-100.</li>
         </ul>
+        <h2>1st grade apps</h2>
+        <ul>
+          {/* Note: Using NextLink here makes the CSS carryover from one app to the next */}
+          <li><a href="/analog-clock-game">Clock Practice</a> - A game to learn to read analog clocks.</li>
+        </ul>
       </main>
     </PageContainer>
   )
