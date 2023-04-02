@@ -47,6 +47,10 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
     checkWinner()
   }
 
+  const onFocus: React.FocusEventHandler<HTMLInputElement> = () => {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  }
+
   React.useEffect(() => {
     setNewTime()
   }, [])
@@ -59,9 +63,9 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
     <div className={container}>
       <Clock value={ currentDate } />
       <div className={timeStyle}>
-        <input type="number" pattern="\d*" min={1} max={12} step={1} value={userHour} onChange={onHourChange} />
+        <input type="number" pattern="\d*" min={1} max={12} value={userHour} onChange={onHourChange} onFocus={onFocus} />
         &nbsp;:&nbsp;
-        <input type="number" pattern="\d*" min={0} max={59} step={1} value={userMinute} onChange={onMinuteChange} />
+        <input type="number" pattern="\d*" min={0} max={59} value={userMinute} onChange={onMinuteChange} onFocus={onFocus} />
       </div>
       <div className={messageStyle}>Score: {score}</div>
       <div className={messageStyle}>{message}</div>

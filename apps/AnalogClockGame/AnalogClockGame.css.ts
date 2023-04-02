@@ -31,6 +31,6 @@ globalStyle(`${container} .react-clock__second-hand`, {
 
 globalStyle(`${timeStyle} input`, {
   height: '18vw',
-  width: '18vw',
+  width: '36vw',
   fontSize: '10vw',
 })
