@@ -12,6 +12,10 @@ export const messageStyle = style({
   color: 'green',
 })
 
+export const timeStyle = style({
+  fontSize: '12vw',
+})
+
 globalStyle(`${container} time`, {
   display: 'flex',
   backgroundColor: 'white',
@@ -23,4 +27,10 @@ globalStyle(`${container} time`, {
 
 globalStyle(`${container} .react-clock__second-hand`, {
   display: 'none',
+})
+
+globalStyle(`${timeStyle} input`, {
+  height: '20vw',
+  width: '20vw',
+  fontSize: '12vw',
 })

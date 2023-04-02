@@ -1,8 +1,7 @@
 import React from "react"
 import Clock from 'react-clock'
 import 'react-clock/dist/Clock.css'
-import InputNumber from 'react-input-number'
-import { container, messageStyle } from "./AnalogClockGame.css"
+import { container, messageStyle, timeStyle } from "./AnalogClockGame.css"
 import { getRandomInt } from "../../utils/numbers"
 
 type AnalogClockGameProps = {
@@ -37,12 +36,14 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
     }
   }
 
-  const onHourChange = (e: number) => {
-    setUserHour(e)
+  const onHourChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    console.log(e)
+    setUserHour(Number(e.target.value))
     checkWinner()
   }
-  const onMinuteChange = (e: number) => {
-    setUserMinute(e)
+  const onMinuteChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    console.log(e)
+    setUserMinute(Number(e.target.value))
     checkWinner()
   }
 
@@ -57,9 +58,10 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
   return (
     <div className={container}>
       <Clock value={ currentDate } />
-      <div>
-        <InputNumber min={1} max={12} step={1} value={userHour} onChange={onHourChange} />:
-        <InputNumber min={0} max={59} step={1} value={userMinute} onChange={onMinuteChange} />
+      <div className={timeStyle}>
+        <input type="number" min={1} max={12} step={1} value={userHour} onChange={onHourChange} />
+        &nbsp;:&nbsp;
+        <input type="number" min={0} max={59} step={1} value={userMinute} onChange={onMinuteChange} />
       </div>
       <div className={messageStyle}>Score: {score}</div>
       <div className={messageStyle}>{message}</div>
