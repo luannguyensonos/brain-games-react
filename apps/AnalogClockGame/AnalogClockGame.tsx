@@ -47,7 +47,9 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
     checkWinner()
   }
 
-  const onFocus: React.FocusEventHandler<HTMLInputElement> = () => {
+  const onFocus: React.FocusEventHandler<HTMLInputElement> = (e) => {
+    e.preventDefault()
+    e.target.focus({preventScroll: true})
     document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 
