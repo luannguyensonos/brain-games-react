@@ -13,15 +13,15 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
   const [minute, setMinute] = React.useState(0)
   const [message, setMessage] = React.useState("")
 
-  const [userHour, setUserHour] = React.useState(0)
-  const [userMinute, setUserMinute] = React.useState(0)
+  const [userHour, setUserHour] = React.useState<number|undefined>()
+  const [userMinute, setUserMinute] = React.useState<number|undefined>()
   const [score, setScore] = React.useState(0)
 
   const setNewTime = () => {
     setHour(getRandomInt(12, {direction: "UP"}))
     setMinute(getRandomInt(59, {direction: "UP"}))
-    setUserHour(0)
-    setUserMinute(0)
+    setUserHour(undefined)
+    setUserMinute(undefined)
     setMessage("")
   }
 
@@ -59,9 +59,9 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
     <div className={container}>
       <Clock value={ currentDate } />
       <div className={timeStyle}>
-        <input type="number" min={1} max={12} step={1} value={userHour} onChange={onHourChange} />
+        <input type="number" pattern="\d*" min={1} max={12} step={1} value={userHour} onChange={onHourChange} />
         &nbsp;:&nbsp;
-        <input type="number" min={0} max={59} step={1} value={userMinute} onChange={onMinuteChange} />
+        <input type="number" pattern="\d*" min={0} max={59} step={1} value={userMinute} onChange={onMinuteChange} />
       </div>
       <div className={messageStyle}>Score: {score}</div>
       <div className={messageStyle}>{message}</div>

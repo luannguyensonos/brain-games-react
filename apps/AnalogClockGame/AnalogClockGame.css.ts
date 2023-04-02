@@ -7,20 +7,20 @@ export const container = style({
 })
 
 export const messageStyle = style({
-  margin: '4vh',
-  fontSize: '12vw',
+  margin: '2vh',
+  fontSize: '6vw',
   color: 'green',
 })
 
 export const timeStyle = style({
-  fontSize: '12vw',
+  fontSize: '10vw',
 })
 
 globalStyle(`${container} time`, {
   display: 'flex',
   backgroundColor: 'white',
-  height: '90vw !important',
-  width: '90vw !important',
+  height: '70vw !important',
+  width: '70vw !important',
   marginTop: '2vh',
   marginBottom: '2vh',
 })
@@ -30,7 +30,7 @@ globalStyle(`${container} .react-clock__second-hand`, {
 })
 
 globalStyle(`${timeStyle} input`, {
-  height: '20vw',
-  width: '20vw',
-  fontSize: '12vw',
+  height: '18vw',
+  width: '18vw',
+  fontSize: '10vw',
 })
