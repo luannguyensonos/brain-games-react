@@ -14,16 +14,21 @@ export const messageStyle = style({
 })
 
 export const timeStyle = style({
-  fontSize: '10vw',
+  margin: '2vh',
+  fontSize: '8vw',
 })
 
 globalStyle(`${container} time`, {
   display: 'flex',
   backgroundColor: 'white',
-  height: '70vw !important',
-  width: '70vw !important',
+  height: '65vw !important',
+  width: '65vw !important',
   marginTop: '2vh',
   marginBottom: '2vh',
+})
+
+globalStyle(`${container}.Correct time`, {
+  backgroundColor: 'green',
 })
 
 globalStyle(`${container} .react-clock__second-hand`, {
@@ -31,8 +36,8 @@ globalStyle(`${container} .react-clock__second-hand`, {
 })
 
 globalStyle(`${timeStyle} input`, {
-  height: '18vw',
-  width: '36vw',
-  fontSize: '10vw',
+  height: '16vw',
+  width: '34vw',
+  fontSize: '8vw',
   textAlign: 'center',
 })

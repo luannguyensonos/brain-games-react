@@ -20,15 +20,18 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
   const setNewTime = () => {
     setHour(getRandomInt(12, {direction: "UP"}))
     setMinute(getRandomInt(59, {direction: "UP"}))
-    setUserHour(undefined)
-    setUserMinute(undefined)
+    setUserHour(0)
+    setUserMinute(0)
     setMessage("")
   }
 
   const checkWinner = (newHour?: number, newMinute?: number) => {
     console.log(newHour, hour, newMinute, minute)
-    if (newHour === hour && newMinute === minute) {
-      setMessage("Correct!")
+    if (newHour === hour &&
+      (newMinute === minute || 
+        newMinute === minute+1 || 
+        newMinute === minute-1)) {
+      setMessage("Correct")
       setScore(score+1)
       setTimeout(() => {
         setNewTime()
@@ -37,12 +40,10 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
   }
 
   const onHourChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    console.log(e)
     setUserHour(Number(e.target.value))
     checkWinner(Number(e.target.value), userMinute)
   }
   const onMinuteChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    console.log(e)
     setUserMinute(Number(e.target.value))
     checkWinner(userHour, Number(e.target.value))
   }
@@ -62,7 +63,7 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
   currentDate.setMinutes(minute)
 
   return (
-    <div className={container}>
+    <div className={`${container} ${message}`}>
       <div className={timeStyle}>
         <input type="number" pattern="\d*" min={1} max={12} value={userHour} onChange={onHourChange} onFocus={onFocus} />
         &nbsp;:&nbsp;
