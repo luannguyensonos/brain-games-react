@@ -25,9 +25,9 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
     setMessage("")
   }
 
-  const checkWinner = () => {
-    console.log(userHour, hour, userMinute, minute)
-    if (userHour === hour && userMinute === minute) {
+  const checkWinner = (newHour?: number, newMinute?: number) => {
+    console.log(newHour, hour, newMinute, minute)
+    if (newHour === hour && newMinute === minute) {
       setMessage("Correct!")
       setScore(score+1)
       setTimeout(() => {
@@ -39,12 +39,12 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
   const onHourChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     console.log(e)
     setUserHour(Number(e.target.value))
-    checkWinner()
+    checkWinner(Number(e.target.value), userMinute)
   }
   const onMinuteChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     console.log(e)
     setUserMinute(Number(e.target.value))
-    checkWinner()
+    checkWinner(userHour, Number(e.target.value))
   }
 
   const onFocus: React.FocusEventHandler<HTMLInputElement> = (e) => {

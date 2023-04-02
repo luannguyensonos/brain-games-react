@@ -4,6 +4,7 @@ export const container = style({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  position: 'sticky',
 })
 
 export const messageStyle = style({
