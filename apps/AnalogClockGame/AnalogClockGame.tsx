@@ -2,10 +2,13 @@ import React from "react"
 import Clock from 'react-clock'
 import 'react-clock/dist/Clock.css'
 import { container, messageStyle, timeStyle } from "./AnalogClockGame.css"
-import { getRandomInt } from "../../utils/numbers"
+import { getRandomInt, createRange } from '../../utils/numbers';
 
 type AnalogClockGameProps = {
 }
+
+const hourRange = [12,1,2,3,4,5,6,7,8,9,10,11]
+const minuteRange = createRange(59)
 
 const AnalogClockGame = ({ }: AnalogClockGameProps) => {
 
@@ -39,20 +42,15 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
     }
   }
 
-  const onHourChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+  const onHourChange: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
     setUserHour(Number(e.target.value))
     checkWinner(Number(e.target.value), userMinute)
   }
-  const onMinuteChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+  const onMinuteChange: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
     setUserMinute(Number(e.target.value))
     checkWinner(userHour, Number(e.target.value))
   }
 
-  const onFocus: React.FocusEventHandler<HTMLInputElement> = (e) => {
-    e.preventDefault()
-    e.target.focus({preventScroll: true})
-    document.body.scrollTop = document.documentElement.scrollTop = 0;
-  }
 
   React.useEffect(() => {
     setNewTime()
@@ -65,9 +63,13 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
   return (
     <div className={`${container} ${message}`}>
       <div className={timeStyle}>
-        <input type="number" pattern="\d*" min={1} max={12} value={userHour} onChange={onHourChange} onFocus={onFocus} />
+        <select name="userHour" value={userHour} onChange={onHourChange}>
+          {hourRange.map(i => <option key={i} value={i}>{i}</option>)}
+        </select>
         &nbsp;:&nbsp;
-        <input type="number" pattern="\d*" min={0} max={59} value={userMinute} onChange={onMinuteChange} onFocus={onFocus} />
+        <select name="userMinute" value={userMinute} onChange={onMinuteChange}>
+          {minuteRange.map(i => <option key={i} value={i}>{i}</option>)}
+        </select>
       </div>
       <Clock value={ currentDate } />
       <div className={messageStyle}>Score: {score}</div>

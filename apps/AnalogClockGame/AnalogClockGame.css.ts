@@ -35,7 +35,7 @@ globalStyle(`${container} .react-clock__second-hand`, {
   display: 'none',
 })
 
-globalStyle(`${timeStyle} input`, {
+globalStyle(`${timeStyle} input, ${timeStyle} select`, {
   height: '16vw',
   width: '34vw',
   fontSize: '8vw',
