@@ -5,6 +5,7 @@ export const container = style({
   flexDirection: 'column',
   alignItems: 'center',
   position: 'sticky',
+  paddingTop: '2vh',
 })
 
 export const clockContainer = style({

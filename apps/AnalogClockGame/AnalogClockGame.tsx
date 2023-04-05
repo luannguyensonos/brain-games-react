@@ -9,6 +9,7 @@ type AnalogClockGameProps = {
 
 const hourRange = [12,1,2,3,4,5,6,7,8,9,10,11]
 const minuteRange = createRange(60)
+const difficulties = ["Easy", "Medium", "Hard"]
 
 const AnalogClockGame = ({ }: AnalogClockGameProps) => {
 
@@ -19,6 +20,7 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
   const [userHour, setUserHour] = React.useState<number|undefined>()
   const [userMinute, setUserMinute] = React.useState<number|undefined>()
   const [score, setScore] = React.useState(0)
+  const [difficulty, setDifficulty] = React.useState("easy")
 
   const setNewTime = () => {
     setHour(getRandomInt(12, {direction: "UP"}))
@@ -50,6 +52,9 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
     setUserMinute(Number(e.target.value))
     checkWinner(userHour, Number(e.target.value))
   }
+  const onDifficultyChange: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
+    setDifficulty(e.target.value)
+  }
 
 
   React.useEffect(() => {
@@ -62,6 +67,12 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
 
   return (
     <div className={`${container} ${message}`}>
+      <select id="difficulty" name="difficulty" value={difficulty} onChange={onDifficultyChange}>
+        {difficulties.map(i => {
+          const val = i.toLocaleLowerCase()
+          return <option key={val} value={val}>{i}</option>
+        })}
+      </select>
       <div className={timeStyle}>
         <select id="hour" name="userHour" value={userHour} onChange={onHourChange}>
           {hourRange.map(i => <option key={i} value={i}>{i}</option>)}
@@ -75,7 +86,7 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
         </select>
       </div>
       <div className={clockContainer}>
-        <img className={clockface} src="/clock_face.png"/>
+        <img className={clockface} src={`/clock_${difficulty}.png`}/>
         <Clock value={ currentDate } />
       </div>
       <div className={messageStyle}>Score: {score}</div>
