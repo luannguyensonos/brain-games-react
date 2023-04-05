@@ -50,5 +50,11 @@ globalStyle(`${timeStyle} input, ${timeStyle} select`, {
   height: '16vw',
   width: '34vw',
   fontSize: '8vw',
-  textAlign: 'center',
+  textAlign: 'left',
+  padding: '3vw',
+  verticalAlign: 'middle',
+})
+
+globalStyle(`${timeStyle} select#hour`, {
+  textAlign: 'right',
 })

@@ -63,11 +63,11 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
   return (
     <div className={`${container} ${message}`}>
       <div className={timeStyle}>
-        <select name="userHour" value={userHour} onChange={onHourChange}>
+        <select id="hour" name="userHour" value={userHour} onChange={onHourChange}>
           {hourRange.map(i => <option key={i} value={i}>{i}</option>)}
         </select>
         &nbsp;:&nbsp;
-        <select name="userMinute" value={userMinute} onChange={onMinuteChange}>
+        <select id="min" name="userMinute" value={userMinute} onChange={onMinuteChange}>
           {minuteRange.map(i => {
             const val = i < 10 ? `0${i}` : i
             return <option key={i} value={i}>{val}</option>
