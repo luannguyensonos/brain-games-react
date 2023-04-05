@@ -7,6 +7,19 @@ export const container = style({
   position: 'sticky',
 })
 
+export const clockContainer = style({
+  position: 'relative',
+  marginTop: '2vh',
+  marginBottom: '2vh',
+})
+
+export const clockface = style({
+  position: 'absolute',
+  height: '75vw !important',
+  width: '75vw !important',
+  zIndex: 100,
+})
+
 export const messageStyle = style({
   margin: '2vh',
   fontSize: '6vw',
@@ -21,10 +34,8 @@ export const timeStyle = style({
 globalStyle(`${container} time`, {
   display: 'flex',
   backgroundColor: 'white',
-  height: '65vw !important',
-  width: '65vw !important',
-  marginTop: '2vh',
-  marginBottom: '2vh',
+  height: '75vw !important',
+  width: '75vw !important',
 })
 
 globalStyle(`${container}.Correct time`, {

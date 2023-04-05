@@ -1,14 +1,14 @@
 import React from "react"
 import Clock from 'react-clock'
 import 'react-clock/dist/Clock.css'
-import { container, messageStyle, timeStyle } from "./AnalogClockGame.css"
+import { clockContainer, clockface, container, messageStyle, timeStyle } from "./AnalogClockGame.css"
 import { getRandomInt, createRange } from '../../utils/numbers';
 
 type AnalogClockGameProps = {
 }
 
 const hourRange = [12,1,2,3,4,5,6,7,8,9,10,11]
-const minuteRange = createRange(59)
+const minuteRange = createRange(60)
 
 const AnalogClockGame = ({ }: AnalogClockGameProps) => {
 
@@ -68,10 +68,16 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
         </select>
         &nbsp;:&nbsp;
         <select name="userMinute" value={userMinute} onChange={onMinuteChange}>
-          {minuteRange.map(i => <option key={i} value={i}>{i}</option>)}
+          {minuteRange.map(i => {
+            const val = i < 10 ? `0${i}` : i
+            return <option key={i} value={i}>{val}</option>
+          })}
         </select>
       </div>
-      <Clock value={ currentDate } />
+      <div className={clockContainer}>
+        <img className={clockface} src="/clock_face.png"/>
+        <Clock value={ currentDate } />
+      </div>
       <div className={messageStyle}>Score: {score}</div>
       <div className={messageStyle}>{message}</div>
     </div>
