@@ -12,7 +12,7 @@ const minuteRange = createRange(60)
 
 const AnalogClockGame = ({ }: AnalogClockGameProps) => {
 
-  const [hour, setHour] = React.useState(0)
+  const [hour, setHour] = React.useState(12)
   const [minute, setMinute] = React.useState(0)
   const [message, setMessage] = React.useState("")
 
@@ -23,7 +23,7 @@ const AnalogClockGame = ({ }: AnalogClockGameProps) => {
   const setNewTime = () => {
     setHour(getRandomInt(12, {direction: "UP"}))
     setMinute(getRandomInt(59, {direction: "UP"}))
-    setUserHour(0)
+    setUserHour(12)
     setUserMinute(0)
     setMessage("")
   }
