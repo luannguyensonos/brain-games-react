@@ -20,6 +20,7 @@ export default function Home() {
         <ul>
           {/* Note: Using NextLink here makes the CSS carryover from one app to the next */}
           <li><a href="/analog-clock-game">Clock Practice</a> - A game to learn to read analog clocks.</li>
+          <li><a href="/number-bonds-lvl1">Number Bonds (Addition)</a> - A game to learn addition bonds.</li>
         </ul>
       </main>
     </PageContainer>
