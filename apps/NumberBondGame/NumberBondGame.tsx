@@ -1,6 +1,6 @@
 import React from "react"
 import { StraightLine } from "react-drawline"
-import { container, numberCircle, numberCorrect, numberGrid, numberTouched, row, topContainer } from "./NumberBondGame.css"
+import { container, numberCircle, numberCorrect, numberGrid, numberGridItem, numberTouched, row, topContainer } from "./NumberBondGame.css"
 import { getRandomInt, createRange, shuffle } from '../../utils/numbers';
 
 type NumberBondGameProps = {
@@ -113,13 +113,13 @@ const NumberBondGame = ({ }: NumberBondGameProps) => {
         <StraightLine 
           startingElement={{ref: topNumber, x: "center", y: "mid"}}
           endingElement={{ref: leftNumber, x: "center", y: "mid"}}
-          style={{backgroundColor: "white"}}
+          style={{backgroundColor: "red"}}
           className="leftLine"
         />
         <StraightLine 
           startingElement={{ref: topNumber, x: "center", y: "mid"}}
           endingElement={{ref: rightNumber, x: "center", y: "mid"}}
-          style={{backgroundColor: "white"}}
+          style={{backgroundColor: "red"}}
           className="rightLine"
         />
       </div>
@@ -134,7 +134,7 @@ const NumberBondGame = ({ }: NumberBondGameProps) => {
           console.log(firstIndex, secondIndex, thisTouched)
           return <div 
               key={i}
-              className={`${numberCircle} ${thisTouched} ${thisCorrect}`}
+              className={`${numberCircle} ${numberGridItem} ${thisTouched} ${thisCorrect}`}
               id={String(i)}
             >
               {val}

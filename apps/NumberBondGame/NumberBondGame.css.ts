@@ -27,8 +27,8 @@ export const numberGrid = style({
 })
 
 export const numberCircle = style({
-  height: '10vw',
-  width: '10vw',
+  height: '15vw',
+  width: '15vw',
   border: '1px solid',
   borderRadius: '50%',
   padding: '2vw',
@@ -39,8 +39,13 @@ export const numberCircle = style({
   textAlign: 'center'
 })
 
+export const numberGridItem = style({
+  height: '12vw',
+  width: '12vw',
+})
+
 export const numberTouched = style({
-  backgroundColor: '#666',
+  backgroundColor: '#999',
 })
 
 export const numberCorrect = style({
